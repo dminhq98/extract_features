@@ -47,7 +47,7 @@ def load_features(file_name = 'features.h5'):
   print(len(path_images))
   return features,path_images
 
-def test(path,index,model,n=1):
+def test(path,index,model,n=10):
     normalize = transforms.Normalize(
         mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     transform = transforms.Compose([
@@ -66,7 +66,7 @@ def test(path,index,model,n=1):
     return k
 
 def search_knn(path, model, index_file,features_file="features.h5",test_forder="result_test",n=10):
-    features, path_images=load_features(file_name = features_file)
+    features, path_images = load_features(file_name = features_file)
     f = len(features[0])
     from annoy import AnnoyIndex
     import random
@@ -144,12 +144,12 @@ def main():
 
     path_image = args.test_forder
     images = get_files(path_image)
-    images = images[0]
+    images = list(images[0])
     print("Checking image...")
     check_file(images)
     print("Checking imageed")
-
     search_knn(images, model, args.index_name,args.features_name,args.path_result,n=10)
+
 if __name__ == "__main__":
 
     main()
