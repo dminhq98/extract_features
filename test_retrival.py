@@ -58,7 +58,8 @@ def test(path,index,model,n=1):
     ])
     print(path)
     img = Image.open(path)
-    image = transform(img).unsqueeze(0).cuda()
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    image = transform(img).unsqueeze(0).to(device)
     feature = model(image).data.cpu().numpy().reshape(-1, )
 
     k = index.get_nns_by_vector(feature, n, include_distances=True)
@@ -144,6 +145,9 @@ def main():
     path_image = args.test_forder
     images = get_files(path_image)
     images = images[0]
+    print("Checking image...")
+    check_file(images)
+    print("Checking imageed")
 
     search_knn(images, model, args.index_name,args.features_name,args.path_result,n=10)
 if __name__ == "__main__":

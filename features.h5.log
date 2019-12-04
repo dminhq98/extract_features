@@ -1,46 +1,8 @@
-14:17:15.005: Writing log file to features.h5.log
-14:17:15.005: Args: Namespace(batch_size=256, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet18', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:17:37.175: Writing log file to features.h5.log
-14:17:37.175: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet18', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:17:54.884: Writing log file to features.h5.log
-14:17:54.884: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:18:31.949: Writing log file to features.h5.log
-14:18:31.949: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:24:38.336: Writing log file to features.h5.log
-14:24:38.337: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:36:20.521: Writing log file to features.h5.log
-14:36:20.522: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:37:01.167: Writing log file to features.h5.log
-14:37:01.167: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:41:34.626: Writing log file to features.h5.log
-14:41:34.626: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/Data/image retrieval', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-14:59:33.057: Writing log file to features.h5.log
-14:59:33.057: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:01:26.408: Writing log file to features.h5.log
-15:01:26.408: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:03:02.566: Writing log file to features.h5.log
-15:03:02.566: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:04:12.889: Writing log file to features.h5.log
-15:04:12.890: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:05:11.964: Writing log file to features.h5.log
-15:05:11.964: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:06:21.522: Writing log file to features.h5.log
-15:06:21.522: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:08:15.078: Writing log file to features.h5.log
-15:08:15.078: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:09:05.175: Writing log file to features.h5.log
-15:09:05.175: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:09:31.593: Writing log file to features.h5.log
-15:09:31.593: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:09:52.462: Writing log file to features.h5.log
-15:09:52.462: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:14:35.435: Writing log file to features.h5.log
-15:14:35.435: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:16:23.066: Writing log file to features.h5.log
-15:16:23.066: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:20:59.149: Writing log file to features.h5.log
-15:20:59.149: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:23:25.846: Writing log file to features.h5.log
-15:23:25.846: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
-15:23:59.468: Writing log file to features.h5.log
-15:23:59.468: Args: Namespace(batch_size=10, image_forder='/home/dminhq98/PycharmProjects/extract_features/dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
+17:49:02.947: Writing log file to features.h5.log
+17:49:02.947: Args: Namespace(batch_size=10, image_forder='dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
+19:41:16.241: Writing log file to features.h5.log
+19:41:16.242: Args: Namespace(batch_size=10, image_forder='dataset', model_name='resnet50', output_features='features.h5', output_log='features.h5.log', workers=4)
+19:42:03.707: Feature shape: (2048,)
+19:42:03.710: Outputting features
+19:42:03.735: Stacking features
+19:42:03.740: Output feature size: (274, 2048)

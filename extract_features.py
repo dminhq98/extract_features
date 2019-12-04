@@ -229,10 +229,10 @@ def main():
     # print (model)
     path_image = args.image_forder
     images = get_files(path_image)
-    images = images[0]
+    images = list(images[0])
     # print(images)
     print("Checking image...")
-    # check_file(images)
+    check_file(images)
     print("Checking imageed")
     extract_features_to_disk(images, model, args.batch_size,
                              args.workers, args.output_features)
