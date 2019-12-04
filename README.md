@@ -7,7 +7,8 @@ h5py\
 tqdm
 
 ### Step 1: Etract feature 
-**usage:** extract_features.py [-h] --image-forder PATH [--model-name MODEL_NAME]\
+
+**usage:** python2 extract_features.py [-h] --image-forder PATH [--model-name MODEL_NAME]\
                            --output-features PATH [--workers N]\
                            [--batch-size N] [--output_log OUTPUT_LOG]\
 
@@ -32,7 +33,8 @@ tqdm
 python2 extract_features.py --image-forder dataset --model-name resnet50 --output-features features.h5 --workers 4 --batch-size 10
 
 ###Step 2: Index feature 
-**usage:** index_features.py [-h] --features-name PATH --output-index PATH\
+
+**usage:** python index_features.py [-h] --features-name PATH --output-index PATH\
                          [--output_log OUTPUT_LOG]\
 
 **optional arguments:**\
@@ -49,7 +51,7 @@ python2 extract_features.py --image-forder dataset --model-name resnet50 --outpu
 python index_features.py --features-name features.h5 --output-index test.ann
 ### Step 3: Test result
 
-**usage:** test_retrival.py [-h] --test-forder PATH [--model-name MODEL_NAME]
+**usage:** python test_retrival.py [-h] --test-forder PATH [--model-name MODEL_NAME]
                         --features-name PATH --index-name PATH
                         [--path-result PATH] [--output_log OUTPUT_LOG]
 **optional arguments:**\
