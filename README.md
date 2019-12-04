@@ -53,7 +53,7 @@ python index_features.py --features-name features.h5 --output-index test.ann
 
 **usage:** python test_retrival.py [-h] --test-forder PATH [--model-name MODEL_NAME]
                         --features-name PATH --index-name PATH
-                        [--path-result PATH] [--output_log OUTPUT_LOG]
+                        [--path-result PATH] [--output_log OUTPUT_LOG]\
 **optional arguments:**\
   -h, --help            show this help message and exit\
   --test-forder PATH    path to the image folder to test (default: None)\
