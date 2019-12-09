@@ -18,7 +18,7 @@ python extract_features.py [-h] --image-forder PATH [--model-name MODEL_NAME]\
                            [--batch-size N] [--output_log OUTPUT_LOG]\
 ``` 
 >**optional arguments:**\
-  -h, --help            show this help message and exit
+  -h, --help            show this help message and exit\
   --image-forder PATH   path to the image folder to extract (default: None)\
   --model-name MODEL_NAME
                         Name pretrained model to extract features from\
