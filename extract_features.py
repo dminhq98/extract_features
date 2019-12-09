@@ -215,7 +215,7 @@ def main():
 
     args = parser.parse_args()
 
-    assert not path.exists(args.output_features)
+    # assert not path.exists(args.output_features)
     if args.output_log is None:
         args.output_log = args.output_features + '.log'
     _set_logging(args.output_log)
