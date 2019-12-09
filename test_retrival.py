@@ -148,6 +148,8 @@ def main():
     print("Checking image...")
     check_file(images)
     print("Checking imageed")
+    images = get_files(path_image)
+    images = list(images[0])
     search_knn(images, model, args.index_name,args.features_name,args.path_result,n=10)
 
 if __name__ == "__main__":

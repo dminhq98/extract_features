@@ -234,6 +234,8 @@ def main():
     print("Checking image...")
     check_file(images)
     print("Checking imageed")
+    images = get_files(path_image)
+    images = list(images[0])
     extract_features_to_disk(images, model, args.batch_size,
                              args.workers, args.output_features)
     # print(images)
