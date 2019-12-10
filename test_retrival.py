@@ -1,22 +1,22 @@
+from tqdm import tqdm
+from torchvision.datasets.folder import default_loader
+from torch import nn
+import torchvision.models as models
+import torchvision.transforms as transforms
+import torch.nn.functional as F
+import torch
+import numpy as np
+import h5py
+import shutil
+from os import path
+import sys
+import random
+import logging
+import argparse
 import os
 from PIL import Image
 FJoin = os.path.join
-import argparse
-import logging
-import random
-import sys
-from os import path
-import shutil
 
-import h5py
-import numpy as np
-import torch
-import torch.nn.functional as F
-import torchvision.transforms as transforms
-import torchvision.models as models
-from torch import nn
-from torchvision.datasets.folder import default_loader
-from tqdm import tqdm
 
 def get_files(path):
     file_list, dir_list = [], []
@@ -26,6 +26,7 @@ def get_files(path):
     file_list = filter(lambda x: not os.path.islink(x), file_list)
     dir_list = filter(lambda x: not os.path.islink(x), dir_list)
     return file_list, dir_list
+
 
 def check_file(path):
     if not os.path.exists('error_image'):
@@ -38,16 +39,18 @@ def check_file(path):
             shutil.move(p, path_err)
             print("file {} error.".format(p))
 
-def load_features(file_name = 'features.h5'):
-  f = h5py.File(file_name, 'r')
-  features = f['features'][:]
-  print(features.shape)
-  path_images = f['path_images']
-  path_images = list(path_images)
-  print(len(path_images))
-  return features,path_images
 
-def test(path,index,model,n=10):
+def load_features(file_name='features.h5'):
+    f = h5py.File(file_name, 'r')
+    features = f['features'][:]
+    print(features.shape)
+    path_images = f['path_images']
+    path_images = list(path_images)
+    print(len(path_images))
+    return features, path_images
+
+
+def test(path, index, model, n=10):
     normalize = transforms.Normalize(
         mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     transform = transforms.Compose([
@@ -65,8 +68,15 @@ def test(path,index,model,n=10):
     k = index.get_nns_by_vector(feature, n, include_distances=True)
     return k
 
-def search_knn(path, model, index_file,features_file="features.h5",test_forder="result_test",n=10):
-    features, path_images = load_features(file_name = features_file)
+
+def search_knn(
+        path,
+        model,
+        index_file,
+        features_file="features.h5",
+        test_forder="result_test",
+        n=10):
+    features, path_images = load_features(file_name=features_file)
     f = len(features[0])
     from annoy import AnnoyIndex
     import random
@@ -76,18 +86,19 @@ def search_knn(path, model, index_file,features_file="features.h5",test_forder="
     if not os.path.exists(test_forder):
         os.makedirs(test_forder)
     for p in path:
-        res = test(p,u,model,10)
+        res = test(p, u, model, 10)
         parent, image_names = os.path.split(p)
         image_name = image_names[:-4]
-        dect = os.path.join(test_forder,image_name)
+        dect = os.path.join(test_forder, image_name)
         if not os.path.exists(dect):
             os.makedirs(dect)
         destination = os.path.join(dect, image_names)
         shutil.copyfile(p, destination)
-        for i,im in enumerate(res[0]):
-            name = "Rank {}".format(i+1)+".jpg"
-            destination = os.path.join(dect,name)
+        for i, im in enumerate(res[0]):
+            name = "Rank {}".format(i + 1) + ".jpg"
+            destination = os.path.join(dect, name)
             shutil.copyfile(path_images[im], destination)
+
 
 def main():
     # Use first line of file docstring as description if it exists.
@@ -150,7 +161,14 @@ def main():
     print("Checking imageed")
     images = get_files(path_image)
     images = list(images[0])
-    search_knn(images, model, args.index_name,args.features_name,args.path_result,n=10)
+    search_knn(
+        images,
+        model,
+        args.index_name,
+        args.features_name,
+        args.path_result,
+        n=10)
+
 
 if __name__ == "__main__":
 

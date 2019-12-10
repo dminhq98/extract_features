@@ -1,23 +1,24 @@
+import importlib
+from tqdm import tqdm
+from torchvision.datasets.folder import default_loader
+from torch import nn
+import torchvision.models as models
+import torchvision.transforms as transforms
+import torch.nn.functional as F
+import torch
+import numpy as np
+import h5py
+import shutil
+from os import path
+import sys
+import random
+import logging
+import argparse
 import os
 from PIL import Image
-FJoin = os.path.join
-import argparse
-import logging
-import random
-import sys
-from os import path
-import shutil
 
-import h5py
-import numpy as np
-import torch
-import torch.nn.functional as F
-import torchvision.transforms as transforms
-import torchvision.models as models
-from torch import nn
-from torchvision.datasets.folder import default_loader
-from tqdm import tqdm
-import importlib
+FJoin = os.path.join
+
 
 def get_files(path):
     file_list, dir_list = [], []
@@ -27,6 +28,7 @@ def get_files(path):
     file_list = filter(lambda x: not os.path.islink(x), file_list)
     dir_list = filter(lambda x: not os.path.islink(x), dir_list)
     return file_list, dir_list
+
 
 def check_file(path):
     if not os.path.exists('error_image'):
@@ -38,6 +40,7 @@ def check_file(path):
             path_err = 'error_image'
             shutil.move(p, path_err)
             print("file {} error.".format(p))
+
 
 def load_model(model, model_file):
     checkpoint = torch.load(model_file)
@@ -54,7 +57,6 @@ def load_model(model, model_file):
         logging.info('Missing keys in --model-file: %s.', missing_keys)
     if extra_keys:
         logging.info('Extra keys ignored in --model-file: %s.', extra_keys)
-
 
 
 class ListDataset(torch.utils.data.Dataset):
@@ -123,13 +125,14 @@ def extract_features_to_disk(image_paths,
     features = {}
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     for i, (input_data, paths) in enumerate(tqdm(loader)):
-        input_var = torch.autograd.Variable(input_data, volatile=True).to(device)
+        input_var = torch.autograd.Variable(
+            input_data, volatile=True).to(device)
         current_features = model(input_var).data.cpu().numpy()
         for j, image_path in enumerate(paths):
-            features[image_path] = current_features[j].reshape(-1,)
+            features[image_path] = current_features[j].reshape(-1, )
 
     feature_shape = features[list(features.keys())[0]].shape
-    logging.info('Feature shape: %s' % (feature_shape, ))
+    logging.info('Feature shape: %s' % (feature_shape,))
     logging.info('Outputting features')
 
     if sys.version_info >= (3, 0):
@@ -139,19 +142,18 @@ def extract_features_to_disk(image_paths,
     paths = features.keys()
     logging.info('Stacking features')
     features_stacked = np.vstack([features[path] for path in paths])
-    logging.info('Output feature size: %s' % (features_stacked.shape, ))
+    logging.info('Output feature size: %s' % (features_stacked.shape,))
     with h5py.File(output_hdf5, 'a') as f:
         f.create_dataset('features', data=features_stacked)
         f.create_dataset(
             'path_images',
-            (len(paths), ),
+            (len(paths),),
             dtype=string_type)
         # For some reason, assigning the list directly causes an error, so we
         # assign it in a loop.
         for i, image_path in enumerate(paths):
             # f['image_names'][i] = image_path_to_name(image_path)
             f['path_images'][i] = image_path
-
 
 
 def _set_logging(logging_filepath):
@@ -173,6 +175,7 @@ def _set_logging(logging_filepath):
     root_logger.addHandler(console_handler)
 
     logging.info('Writing log file to %s', logging_filepath)
+
 
 def main():
     # Use first line of file docstring as description if it exists.
@@ -243,6 +246,7 @@ def main():
     # print(args.workers)
     # print(args.batch_size)
     # print(args.output_features)
-if __name__ == "__main__":
 
+
+if __name__ == "__main__":
     main()
