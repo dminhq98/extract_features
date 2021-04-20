@@ -50,7 +50,7 @@ progressbar2==3.42.0
 prometheus-client==0.7.1
 prompt-toolkit==2.0.9
 ptyprocess==0.6.0
-py==1.8.0
+py==1.10.0
 pycparser==2.19
 pylint==2.3.1
 pyrsistent==0.15.4
